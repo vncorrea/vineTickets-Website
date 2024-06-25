@@ -1,8 +1,22 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+@import url("https://fonts.bunny.net/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
+
+#header {
+    margin-top: 20px;
+    position: relative;
+}
+
+#header_content {
+    background-color: $secondary-color;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
