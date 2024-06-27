@@ -1,19 +1,64 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom";
-import { Input, Avatar, Button } from "antd";
-import { MenuOutlined, LogoutOutlined } from "@ant-design/icons";
+import { Input, Avatar, Button, Dropdown, Menu } from "antd";
+import { MenuOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { HeaderDrawer } from "./HeaderDrawer";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LocalActivityIcon from "@mui/icons-material/LocalActivity";
+import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
+import BookOnlineIcon from "@mui/icons-material/BookOnline";
 
 export function Header() {
     const [visible, setVisible] = useState(false);
+    const [dropdownVisible, setDropdownVisible] = useState(false);
 
     const showDrawer = () => {
         setVisible(true);
     };
 
-    const onClose = () => {
+    const onCloseDrawer = () => {
         setVisible(false);
     };
+
+    const toggleMenu = () => {
+        setVisible(!visible);
+    };
+
+    const toggleDropdown = () => {
+        setDropdownVisible(!dropdownVisible);
+    };
+
+    const menu = (
+        <Menu
+            items={[
+                {
+                    label: "Conta",
+                    key: "profile",
+                    icon: <AccountCircleIcon />,
+                },
+                {
+                    label: "Eventos",
+                    key: "events",
+                    icon: <ConfirmationNumberIcon />,
+                },
+                {
+                    label: "Meus ingressos",
+                    key: "mytickets",
+                    icon: <BookOnlineIcon />,
+                },
+                {
+                    label: "Favoritos",
+                    key: "favorites",
+                    icon: <LocalActivityIcon />,
+                },
+                {
+                    label: "Sair",
+                    key: "logout",
+                    icon: <LogoutOutlined />,
+                },
+            ]}
+        />
+    );
 
     return (
         <header className="">
@@ -35,11 +80,18 @@ export function Header() {
                             enterButton={true}
                         ></Input.Search>
 
-                        <Avatar
-                            size="large"
-                            className="border border-1 border-dark cursor-pointer"
-                            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                        />
+                        <Dropdown
+                            overlay={menu}
+                            onOpenChange={toggleDropdown}
+                            open={dropdownVisible}
+                        >
+                            <Avatar
+                                size="large"
+                                className="border border-1 border-dark cursor-pointer"
+                                src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                onClick={toggleDropdown}
+                            />
+                        </Dropdown>
                     </div>
                     <div
                         className="d-lg-none d-flex justify-content-end me-2"
@@ -54,7 +106,7 @@ export function Header() {
                 </div>
             </div>
 
-            <HeaderDrawer visible={visible} onClose={onClose} />
+            <HeaderDrawer visible={visible} onClose={onCloseDrawer} />
         </header>
     );
 }
