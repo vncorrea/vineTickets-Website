@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom";
-import { Input, Avatar, Drawer, Button } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
+import { Input, Avatar, Button } from "antd";
+import { MenuOutlined, LogoutOutlined } from "@ant-design/icons";
+import { HeaderDrawer } from "./HeaderDrawer";
 
 export function Header() {
     const [visible, setVisible] = useState(false);
@@ -53,17 +54,7 @@ export function Header() {
                 </div>
             </div>
 
-            <Drawer
-                title="Menu"
-                placement="right"
-                onClose={onClose}
-                visible={visible}
-            >
-                {/* Conteúdo do Drawer */}
-                <p>Alguma opção 1</p>
-                <p>Alguma opção 2</p>
-                <p>Alguma opção 3</p>
-            </Drawer>
+            <HeaderDrawer visible={visible} onClose={onClose} />
         </header>
     );
 }
