@@ -12,4 +12,8 @@ import "./bootstrap";
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import "./components/HeaderAppBar/HeaderAppBar";
+import "./components/Header/Header";
+import "./components/MainEvents/MainEvents";
+import "./components/Events/NextEvents";
+import "./components/Events/ContainerEvents";
+import "./components/Footer/Footer";

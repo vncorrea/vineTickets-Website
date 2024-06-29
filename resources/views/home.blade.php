@@ -10,7 +10,14 @@
     <title>Laravel</title>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
   </head>
-  <body class="antialiased">
-    <div id="header"></div>
-  </body>
+  <body class="antialiased min-vh-100 d-flex justify-content-center align-items-center flex-column">
+    <div id="container" style="max-width: 1360px;">
+      <div id="header"></div>
+      <div id="main_events"></div>
+      <div id="next_events"></div>
+      <div id="container_events"></div>
+     
+    </div>
+     <div id="footer" class="w-100"></div>
+</body>
 </html>
