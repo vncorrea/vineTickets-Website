@@ -64,7 +64,7 @@ export function Header() {
         <header className="">
             <div
                 id="header_content"
-                className="p-3 mx-5 rounded-5 d-flex flex-row justify-content-center align-items-center"
+                className="p-3 mx-3 rounded-5 d-flex flex-row justify-content-center align-items-center z-3"
             >
                 <div className="col-6 d-flex align-items-center">
                     <span className="fs-1 ps-4 fw-bolder text-white">

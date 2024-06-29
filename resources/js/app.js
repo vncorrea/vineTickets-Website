@@ -13,3 +13,7 @@ import "./bootstrap";
  */
 
 import "./components/Header/Header";
+import "./components/MainEvents/MainEvents";
+import "./components/Events/NextEvents";
+import "./components/Events/ContainerEvents";
+import "./components/Footer/Footer";
