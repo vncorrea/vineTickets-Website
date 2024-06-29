@@ -7,6 +7,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LocalActivityIcon from "@mui/icons-material/LocalActivity";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import BookOnlineIcon from "@mui/icons-material/BookOnline";
+import ShoppingCartOutlined from "@mui/icons-material/ShoppingCartOutlined";
 
 export function Header() {
     const [visible, setVisible] = useState(false);
@@ -80,18 +81,21 @@ export function Header() {
                             enterButton={true}
                         ></Input.Search>
 
-                        <Dropdown
-                            overlay={menu}
-                            onOpenChange={toggleDropdown}
-                            open={dropdownVisible}
-                        >
-                            <Avatar
-                                size="large"
-                                className="border border-1 border-dark cursor-pointer"
-                                src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                                onClick={toggleDropdown}
-                            />
-                        </Dropdown>
+                        <div>
+                            <Dropdown
+                                overlay={menu}
+                                onOpenChange={toggleDropdown}
+                                open={dropdownVisible}
+                            >
+                                <Avatar
+                                    size="large"
+                                    className="border border-1 border-dark cursor-pointer"
+                                    src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                    onClick={toggleDropdown}
+                                />
+                            </Dropdown>
+                            <ShoppingCartOutlined className="fs-1 ms-2" />
+                        </div>
                     </div>
                     <div
                         className="d-lg-none d-flex justify-content-end me-2"
