@@ -7,7 +7,7 @@ const { Meta } = Card;
 export function CardEvents() {
     return (
         <Card
-            className="h-100 mb-5"
+            className="h-100 mb-5 cursor-pointer"
             style={{ width: 255, height: 200 }}
             cover={
                 <img

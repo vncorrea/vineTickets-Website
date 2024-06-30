@@ -12,6 +12,7 @@
   </head>
   <body class="antialiased min-vh-100 d-flex justify-content-center align-items-center flex-column">
     <div id="container" style="max-width: 1360px;">
+      <input type="hidden" id="user" value={{Auth::user()}}>
       <div id="header"></div>
       <div id="main_events"></div>
       <div id="next_events"></div>

@@ -10,7 +10,7 @@ export function NextEvents() {
             <div className="w-25">
                 <Select
                     className="w-100"
-                    placeholder="Selecione a região"
+                    placeholder="Selecione a cidade"
                     options={[
                         {
                             value: "sample",
