@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createRoot } from "react-dom";
+import { createRoot } from "react-dom/client"; // Atualizado para a nova API do React 18
 import { Input, Avatar, Button, Dropdown, Menu } from "antd";
 import { MenuOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { HeaderDrawer } from "./HeaderDrawer";
@@ -8,10 +8,13 @@ import LocalActivityIcon from "@mui/icons-material/LocalActivity";
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import BookOnlineIcon from "@mui/icons-material/BookOnline";
 import ShoppingCartOutlined from "@mui/icons-material/ShoppingCartOutlined";
+import PeopleIcon from "@mui/icons-material/People";
 
 export function Header() {
     const [visible, setVisible] = useState(false);
     const [dropdownVisible, setDropdownVisible] = useState(false);
+
+    let user = (document.getElementById("user") as HTMLInputElement)?.value;
 
     const showDrawer = () => {
         setVisible(true);
@@ -21,45 +24,52 @@ export function Header() {
         setVisible(false);
     };
 
-    const toggleMenu = () => {
-        setVisible(!visible);
-    };
-
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
     };
 
-    const menu = (
-        <Menu
-            items={[
-                {
-                    label: "Conta",
-                    key: "profile",
-                    icon: <AccountCircleIcon />,
-                },
-                {
-                    label: "Eventos",
-                    key: "events",
-                    icon: <ConfirmationNumberIcon />,
-                },
-                {
-                    label: "Meus ingressos",
-                    key: "mytickets",
-                    icon: <BookOnlineIcon />,
-                },
-                {
-                    label: "Favoritos",
-                    key: "favorites",
-                    icon: <LocalActivityIcon />,
-                },
-                {
-                    label: "Sair",
-                    key: "logout",
-                    icon: <LogoutOutlined />,
-                },
-            ]}
-        />
-    );
+    const menuItems = [
+        {
+            label: "Conta",
+            key: "profile",
+            icon: <AccountCircleIcon />,
+        },
+        {
+            label: "Eventos",
+            key: "events",
+            icon: <ConfirmationNumberIcon />,
+        },
+        {
+            label: "Meus ingressos",
+            key: "mytickets",
+            icon: <BookOnlineIcon />,
+        },
+        {
+            label: "Favoritos",
+            key: "favorites",
+            icon: <LocalActivityIcon />,
+        },
+        {
+            label: "Sair",
+            key: "logout",
+            icon: <LogoutOutlined />,
+        },
+    ];
+
+    const menuItensWithoutUser = [
+        {
+            label: "Entrar",
+            key: "login",
+            icon: <UserOutlined />,
+        },
+        {
+            label: "Registrar",
+            key: "signup",
+            icon: <PeopleIcon />,
+        },
+    ];
+
+    const menu = <Menu items={user ? menuItems : menuItensWithoutUser} />;
 
     return (
         <header className="">
@@ -90,11 +100,17 @@ export function Header() {
                                 <Avatar
                                     size="large"
                                     className="border border-1 border-dark cursor-pointer"
-                                    src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                    src={
+                                        user
+                                            ? user.avatar
+                                            : "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                                    }
                                     onClick={toggleDropdown}
                                 />
                             </Dropdown>
-                            <ShoppingCartOutlined className="fs-1 ms-2" />
+                            {user && (
+                                <ShoppingCartOutlined className="fs-1 ms-2" />
+                            )}
                         </div>
                     </div>
                     <div
@@ -110,12 +126,16 @@ export function Header() {
                 </div>
             </div>
 
-            <HeaderDrawer visible={visible} onClose={onCloseDrawer} />
+            <HeaderDrawer
+                visible={visible}
+                onClose={onCloseDrawer}
+                user={user}
+            />
         </header>
     );
 }
 
 const rootElement = document.getElementById("header");
-const root = createRoot(rootElement);
+const root = createRoot(rootElement); // Atualizado para a nova API do React 18
 
 root.render(<Header />);
