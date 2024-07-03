@@ -6,4 +6,5 @@ use App\Http\Controllers\HomeController;
 
 Route::prefix('/')->group(function () {
     Route::get('/', [HomeController::class, 'index']);
+    Route::get('/register', [HomeController::class, 'register']);
 });

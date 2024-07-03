@@ -1,5 +1,5 @@
 import React from "react";
-import { createRoot } from "react-dom";
+import { createRoot } from "react-dom/client";
 import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
 import { maxWidth } from "@mui/system";
 
