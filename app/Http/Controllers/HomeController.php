@@ -14,4 +14,8 @@ class HomeController extends Controller
 
         return response()->json($events);
    }
+
+   public function register() {
+    return view('register');
+   }
 }

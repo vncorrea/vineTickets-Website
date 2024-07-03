@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createRoot } from "react-dom/client"; // Atualizado para a nova API do React 18
+import { createRoot } from "react-dom/client";
 import { Input, Avatar, Button, Dropdown, Menu } from "antd";
 import { MenuOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { HeaderDrawer } from "./HeaderDrawer";
@@ -26,6 +26,14 @@ export function Header() {
 
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
+    };
+
+    const register = () => {
+        window.location.href = "/register";
+    };
+
+    const Home = () => {
+        window.location.href = "/";
     };
 
     const menuItems = [
@@ -65,6 +73,7 @@ export function Header() {
         {
             label: "Registrar",
             key: "signup",
+            onClick: () => register(),
             icon: <PeopleIcon />,
         },
     ];
@@ -78,7 +87,10 @@ export function Header() {
                 className="p-3 mx-3 rounded-5 d-flex flex-row justify-content-center align-items-center z-3"
             >
                 <div className="col-6 d-flex align-items-center">
-                    <span className="fs-1 ps-4 fw-bolder text-white">
+                    <span
+                        onClick={() => Home()}
+                        className="fs-1 ps-4 fw-bolder text-white cursor-pointer"
+                    >
                         vineTickets
                     </span>
                     <img src="../../../assets/images/logo.png" alt="" />
@@ -136,6 +148,6 @@ export function Header() {
 }
 
 const rootElement = document.getElementById("header");
-const root = createRoot(rootElement); // Atualizado para a nova API do React 18
+const root = createRoot(rootElement);
 
 root.render(<Header />);
